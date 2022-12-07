@@ -1,1 +1,1 @@
-# Magic-Villa
+# MagicVilla
