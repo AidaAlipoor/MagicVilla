@@ -1,7 +1,6 @@
-﻿using MagicVilla.WebAPI.DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace MagicVilla.WebAPI.DataAccess.Configuration
+namespace DataAccess.Configuration
 {
     public static class Villa
     {

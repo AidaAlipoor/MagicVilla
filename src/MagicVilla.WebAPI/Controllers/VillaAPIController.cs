@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Web.Http;
 
-namespace MagicVilla.WebAPI.Controllers
+namespace WebAPI.Controllers
 {
-    [Route("api/[VillaAPI]")]
-    [ApiController]
-    public class VillaAPIController : ControllerBase
+    public class VillaAPIController : ApiController
     {
+        //public async Task<IHttpActionResult> Get()
+        //{
 
+        //}
     }
 }

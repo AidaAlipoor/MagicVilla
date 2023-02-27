@@ -1,14 +1,13 @@
-﻿using MagicVilla.WebAPI.DataAccess.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace MagicVilla.WebAPI.DataAccess.Configuration
+namespace DataAccess.Configuration
 {
     public class ApplicationDbContext: DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) { }
 
 
-        public DbSet<Entities.Villa> Villas { get; set; }
+        public DbSet<DataAccess.Entities.Villa> Villas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

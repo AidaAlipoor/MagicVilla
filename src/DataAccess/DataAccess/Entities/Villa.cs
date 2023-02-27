@@ -1,4 +1,4 @@
-﻿namespace MagicVilla.WebAPI.DataAccess.Entities
+﻿namespace DataAccess.Entities
 {
     public class Villa
     {
