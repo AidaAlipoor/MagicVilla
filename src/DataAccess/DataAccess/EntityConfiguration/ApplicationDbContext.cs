@@ -2,16 +2,17 @@
 
 namespace DataAccess.Configuration
 {
-    public class ApplicationDbContext: DbContext
+    internal class ApplicationDbContext: DbContext 
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
 
-
-        public DbSet<DataAccess.Entities.Villa> Villas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.VillaConfiguration();
         }
+
+        public DbSet<Entities.Villa> Villas { get; set; }
     }
 }
