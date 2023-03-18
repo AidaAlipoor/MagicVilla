@@ -3,10 +3,10 @@ using System.Linq.Expressions;
 
 namespace Business.Repositories
 {
-    public interface IRepository
+    public interface IRepository<TEntity> where TEntity : class
     {
-        Task<List<Villa>> Get(Expression<Func<Villa>> filter);
-        Task<Villa> Get(Expression<Func<Villa>> filter, bool tracked = true);
+        Task<List<Villa>> Get(Expression<Func<TEntity, bool>> predicate);
+        Task<Villa> Get(Expression<Func<TEntity, bool>> predicate, bool tracked = true);
         Task<Villa> Get(int id);
         Task Insert(Villa entity);
         Task Delete(Villa entity);

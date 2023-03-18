@@ -1,9 +1,10 @@
 ﻿using DataAccess.Entities;
+using System;
 using System.Linq.Expressions;
 
 namespace Business.Repositories
 {
-    internal abstract class Repository : IRepository
+    internal abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected Repository()
         {
@@ -15,17 +16,17 @@ namespace Business.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<Villa>> Get(Expression<Func<Villa>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Villa> Get(Expression<Func<Villa>> filter, bool tracked = true)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<Villa> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Villa>> Get(Expression<Func<TEntity, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Villa> Get(Expression<Func<TEntity, bool>> predicate, bool tracked = true)
         {
             throw new NotImplementedException();
         }
