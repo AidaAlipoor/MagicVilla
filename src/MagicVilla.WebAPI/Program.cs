@@ -1,6 +1,6 @@
 using MagicVilla.WebAPI;
 using DataAccess.Configuration;
-using Microsoft.EntityFrameworkCore;
+using Business.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

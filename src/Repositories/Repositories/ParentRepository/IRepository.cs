@@ -1,7 +1,7 @@
 ﻿using DataAccess.Entities;
 using System.Linq.Expressions;
 
-namespace Business.Repositories
+namespace Business.Repositories.ParentRepository
 {
     public interface IRepository<TEntity> where TEntity : class
     {
