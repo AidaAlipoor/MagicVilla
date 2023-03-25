@@ -1,6 +1,7 @@
 ﻿using DataAccess.Configuration;
 using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client.AuthScheme.PoP;
 using System.Linq.Expressions;
 
 namespace Business.Repositories
@@ -23,7 +24,13 @@ namespace Business.Repositories
 
         public Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> entities = _dbSet;
+
+            if (filter is not null)
+            {
+                entities = _dbSet.Where(filter);
+            }
+            return entities.ToListAsync();
         }
 
         public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter = null, bool tracked = true)
@@ -31,14 +38,14 @@ namespace Business.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetAsync(int id)
+        public virtual async Task<TEntity> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync();
         }
 
-        public Task SaveChangesAsync()
+        public virtual async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+           await _dbContext.SaveChangesAsync();
         }
     }
 }
