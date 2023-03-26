@@ -10,7 +10,7 @@ namespace DataAccess.Configuration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.VillaConfiguration();
+            modelBuilder.VillaConfig();
         }
 
         public DbSet<Entities.Villa> Villas { get; set; }

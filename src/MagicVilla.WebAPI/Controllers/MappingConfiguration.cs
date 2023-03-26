@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Business.Dtos;
 using DataAccess.Entities;
-using WebAPI.Controllers.Dtos;
 
 namespace MagicVilla.WebAPI
 {

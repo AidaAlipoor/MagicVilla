@@ -1,4 +1,4 @@
-﻿namespace WebAPI.Controllers.Dtos
+﻿namespace Business.Dtos
 {
     public class VillaUpdateDto
     {

@@ -20,7 +20,7 @@ namespace Business.Repositories.ParentRepository
 
         public virtual void Delete(TEntity entity) => _dbSet.Remove(entity);
 
-        public Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>>? filter = null)
+        public Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null) 
         {
             IQueryable<TEntity> entities = _dbSet;
 

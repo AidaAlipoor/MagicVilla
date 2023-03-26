@@ -2,9 +2,9 @@
 
 namespace DataAccess.Configuration
 {
-    public static class Villa
+    public static class VillaConfiguration
     {
-        public static void VillaConfiguration(this ModelBuilder modelBuilder)
+        public static void VillaConfig(this ModelBuilder modelBuilder)
         {
                 var villaEntity = modelBuilder.Entity<Entities.Villa>();
                 villaEntity.HasKey(v => v.Id);
