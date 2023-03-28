@@ -1,5 +1,4 @@
-﻿using DataAccess.Configuration;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Business.Repositories.ParentRepository

@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccess.EntityConfiguration;
+using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Configuration
+namespace DataAccess
 {
-    public class ApplicationDbContext: DbContext 
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }

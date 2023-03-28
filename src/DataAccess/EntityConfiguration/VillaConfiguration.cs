@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Configuration
+namespace DataAccess.EntityConfiguration
 {
     public static class VillaConfiguration
     {

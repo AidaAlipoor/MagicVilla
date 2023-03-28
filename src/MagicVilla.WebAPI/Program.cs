@@ -1,12 +1,13 @@
-using MagicVilla.WebAPI;
-using DataAccess.Configuration;
-using Business.Repositories;
+using Business.RepositoryConfiguration;
+using Business.MappingConfiguration;
+using DataAccess.ContainerConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.ResolveDataAccessServices();
-builder.Services.AddAutoMapper(typeof(MappingConfiguration));
+builder.Services.ResolveDataAccessServices(builder.Configuration.GetConnectionString("DefaultSqlConnection")!);
+builder.Services.AddVillaRepositoryToContainer();
+builder.Services.AddAutoMapperToContainer();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

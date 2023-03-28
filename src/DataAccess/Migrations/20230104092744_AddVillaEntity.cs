@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MagicVilla.WebAPI.Migrations
+namespace DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddVillaEntity : Migration
