@@ -8,27 +8,33 @@ namespace Business.Repositories.VillaRepository
 {
     internal class VillaRepository : Repository<VillaEntity>, IVillaRepository
     {
-        private readonly IMapper _Mapper;
+        private readonly IMapper _mapper;
         public VillaRepository(ApplicationDbContext dbContext , IMapper mapper) 
-            : base(dbContext) => _Mapper = mapper;
+            : base(dbContext) => _mapper = mapper;
 
-        public async Task<VillaViewModel> GetAllAsync()
+        public async Task<List<VillaViewModel>> GetAsync()
         {
-            var entities = await base.GetAsync(null , false);
+            var entities = await base.GetAllAsync();
 
-            return _Mapper.Map<VillaViewModel>(entities);
+            var records = _mapper.Map<List<VillaViewModel>>(entities);
+
+            return records; 
         }
 
         public void Insert(VillaCreateDto dto)
         {
-            var entity = _Mapper.Map<VillaEntity>(dto);
+            var entity = _mapper.Map<VillaEntity>(dto);
 
             Insert(entity);
         }
 
-        public Task UpdateAsync(int id, VillaUpdateDto dto)
+        public async Task UpdateAsync(int id, VillaUpdateDto dto)
         {
-            throw new NotImplementedException();
+            var entity = GetAsync(id);
+
+            var updatedEntity = _mapper.Map<VillaEntity>(dto);
+
+            Update(updatedEntity);
         }
 
         public async Task DeleteAsync(int id)

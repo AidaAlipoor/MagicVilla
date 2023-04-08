@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var entities = await _Repository.GetAllAsync();
+            var entities = await _Repository.GetAsync();
 
             return Ok(entities);
         }
@@ -31,5 +31,16 @@ namespace WebAPI.Controllers
 
             return Ok(dto);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(int id , VillaUpdateDto dto)
+        {
+            await _Repository.UpdateAsync(id, dto);   
+
+            await _Repository.SaveChangesAsync();
+
+            return Ok(dto);
+        }
+
     }
 }

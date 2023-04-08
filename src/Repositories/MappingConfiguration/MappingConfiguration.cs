@@ -13,8 +13,6 @@ namespace Business.MappingConfiguration
             CreateMap<Villa , VillaCreateDto>().ReverseMap();
             
             CreateMap<Villa , VillaViewModel>().ReverseMap();
-            CreateMap<object , object>();
-
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Business.Repositories.VillaRepository
 {
     public interface IVillaRepository : IRepository<Villa>
     {
-        Task<VillaViewModel> GetAllAsync();
+        Task<List<VillaViewModel>> GetAsync();
         void Insert(VillaCreateDto dto);
         Task UpdateAsync(int id , VillaUpdateDto dto); 
         Task DeleteAsync(int id);

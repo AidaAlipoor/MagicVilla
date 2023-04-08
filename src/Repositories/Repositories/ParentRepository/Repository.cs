@@ -19,33 +19,27 @@ namespace Business.Repositories.ParentRepository
 
         public virtual void Delete(TEntity entity) => _dbSet.Remove(entity);
 
-        public Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null) 
-        {
-            IQueryable<TEntity> entities = _dbSet;
+        public async Task<List<TEntity>> GetAllAsync() => await _dbSet.ToListAsync();
 
-            if (filter is not null)
-            {
-                entities = _dbSet.Where(filter);
-            }
-            return entities.ToListAsync();
-        }
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter)
+            => await _dbSet.Where(filter).ToListAsync();
 
-        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true)
+        public async Task<TEntity> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true)
         {
             IQueryable<TEntity> entities = _dbSet;
 
             if (filter is not null && tracked is false)
             {
-                entities = entities.AsNoTracking();
+                entities.AsNoTracking();
 
                 entities = _dbSet.Where(filter);
             }
-            return entities.FirstOrDefaultAsync();
+            return await entities.FirstOrDefaultAsync();
         }
 
         public virtual async Task<TEntity> GetAsync(int id)
         {
-            return await _dbSet.FindAsync();
+            return await _dbSet.FindAsync(id);
         }
 
         public virtual async Task SaveChangesAsync()
