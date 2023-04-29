@@ -41,6 +41,15 @@ namespace WebAPI.Controllers
 
             return Ok(dto);
         }
+        [HttpDelete] 
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _Repository.DeleteAsync(id);
+
+            await _Repository.SaveChangesAsync();
+
+            return NoContent();
+        }
 
     }
 }
