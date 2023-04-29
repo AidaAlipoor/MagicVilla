@@ -22,6 +22,14 @@ namespace WebAPI.Controllers
             return Ok(entities);
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var entity = await _Repository.GetAsync(id);
+
+            return Ok(entity);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]VillaCreateDto dto)
         {
@@ -41,6 +49,7 @@ namespace WebAPI.Controllers
 
             return Ok(dto);
         }
+
         [HttpDelete] 
         public async Task<IActionResult> Delete(int id)
         {
