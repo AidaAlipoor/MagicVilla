@@ -30,9 +30,9 @@ namespace Business.Repositories.VillaRepository
 
         public async Task UpdateAsync(int id, VillaUpdateDto dto)
         {
-            var entity = GetAsync(id);
+            var entity = await GetAsync(id);
 
-            var updatedEntity = _mapper.Map<VillaEntity>(dto);
+            var updatedEntity = _mapper.Map(dto , entity);
 
             Update(updatedEntity);
         }
