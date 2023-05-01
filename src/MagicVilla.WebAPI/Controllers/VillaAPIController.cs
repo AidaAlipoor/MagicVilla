@@ -33,11 +33,16 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]VillaCreateDto dto)
         {
-            _Repository.Insert(dto);
+            if(ModelState.IsValid)
+            {
+                _Repository.Insert(dto);
 
-            await _Repository.SaveChangesAsync();
+                await _Repository.SaveChangesAsync();
 
-            return Ok(dto);
+                return Ok(dto);
+            }
+
+            return BadRequest();
         }
 
         [HttpPut]
