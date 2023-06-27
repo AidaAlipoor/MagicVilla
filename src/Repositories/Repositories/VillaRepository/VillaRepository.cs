@@ -25,6 +25,8 @@ namespace Business.Repositories.VillaRepository
         {
             var entity = _mapper.Map<VillaEntity>(dto);
 
+            ValidateEntity(entity , dto.Name);
+
             Insert(entity);
         }
 
@@ -32,16 +34,61 @@ namespace Business.Repositories.VillaRepository
         {
             var entity = await GetAsync(id);
 
+            await CheckIfVillaExist(id, dto.Name);
+
             var updatedEntity = _mapper.Map(dto , entity);
+
+            ValidateEntity(updatedEntity, dto.Name); 
 
             Update(updatedEntity);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int? id)
+        {
+            await DoesIdExist(id ?? default);
+
+            var entity = await GetAsync(id ?? default);
+
+            Delete(entity);
+        }
+
+
+
+        private void ValidateEntity(VillaEntity entity , string name)
+        {
+            CheckNameAndDetailAreEmpty(entity.Name, entity.Detail);
+            CheckNameAndDetailAreLetter(entity.Name, entity.Detail);
+        }
+
+
+        private async Task CheckIfVillaExist(int id , string name)
+        {
+            await DoesIdExist(id);
+
+            var entity = await GetAsync(id);
+
+            if (entity.Name == name)
+                throw new Exception("Villa is already exist!");
+        }
+        private void CheckNameAndDetailAreLetter(string name , string detail)
+        {
+            if(int.TryParse(name, out _) 
+                || int.TryParse(detail, out _))
+                throw new Exception("Name or Detail is invalid");
+        }
+        private void CheckNameAndDetailAreEmpty(string name, string detail)
+        {
+            if(string.IsNullOrEmpty(name) 
+                || string.IsNullOrEmpty(detail)) 
+                throw new Exception("Name or Detail is empty");
+
+        }
+        private async Task DoesIdExist(int id)
         {
             var entity = await GetAsync(id);
 
-            Delete(entity);
+            if(entity is null)
+                throw new Exception("id does not exist");
         }
     }
 }

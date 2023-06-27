@@ -31,31 +31,26 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]VillaCreateDto dto)
+        public async Task<IActionResult> Post([FromBody] VillaCreateDto dto)
         {
-            if(ModelState.IsValid)
-            {
-                _Repository.Insert(dto);
+            _Repository.Insert(dto);
 
-                await _Repository.SaveChangesAsync();
+            await _Repository.SaveChangesAsync();
 
-                return Ok(dto);
-            }
-
-            return BadRequest();
+            return Ok(dto); 
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int id , VillaUpdateDto dto)
+        public async Task<IActionResult> Put(int id, VillaUpdateDto dto)
         {
-            await _Repository.UpdateAsync(id, dto);   
+            await _Repository.UpdateAsync(id, dto);
 
             await _Repository.SaveChangesAsync();
 
             return Ok(dto);
         }
 
-        [HttpDelete] 
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             await _Repository.DeleteAsync(id);

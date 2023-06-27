@@ -10,6 +10,6 @@ namespace Business.Repositories.VillaRepository
         Task<List<VillaViewModel>> GetAsync();
         void Insert(VillaCreateDto dto);
         Task UpdateAsync(int id , VillaUpdateDto dto); 
-        Task DeleteAsync(int id);
+        Task DeleteAsync(int? id);
     }
 }

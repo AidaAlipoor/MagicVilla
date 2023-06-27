@@ -37,10 +37,8 @@ namespace Business.Repositories.ParentRepository
             return await entities.FirstOrDefaultAsync();
         }
 
-        public virtual async Task<TEntity> GetAsync(int id)
-        {
-            return await _dbSet.FindAsync(id);
-        }
+        public virtual async Task<TEntity> GetAsync(int id) => await _dbSet.FindAsync(id);
+       
 
         public virtual async Task SaveChangesAsync()
         {
