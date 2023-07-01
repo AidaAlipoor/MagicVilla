@@ -39,6 +39,7 @@ namespace DataAccess
                 );
         }
 
-        public DbSet<Entities.Villa> Villas { get; set; }
+        public DbSet<Villa> Villas { get; set; }
+        public DbSet<VillaNumber> VillaNumbers { get; set; }
     }
 }
