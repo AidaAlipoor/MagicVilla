@@ -1,4 +1,4 @@
-﻿using Business.Dtos.VillaDtos;
+﻿using Business.Dtos;
 using Business.Repositories.VillaRepository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,16 +8,16 @@ namespace WebAPI.Controllers
     [ApiController]
     public class VillaAPIController : ControllerBase
     {
-        private readonly IVillaRepository _repository;
+        private readonly IVillaRepository _Repository;
         public VillaAPIController(IVillaRepository repository)
         {
-            _repository = repository;
+            _Repository = repository;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var entities = await _repository.GetAsync();
+            var entities = await _Repository.GetAsync();
 
             return Ok(entities);
         }
@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
-            var entity = await _repository.GetAsync(id);
+            var entity = await _Repository.GetAsync(id);
 
             return Ok(entity);
         }
@@ -33,9 +33,9 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] VillaCreateDto dto)
         {
-            _repository.Insert(dto);
+            _Repository.Insert(dto);
 
-            await _repository.SaveChangesAsync();
+            await _Repository.SaveChangesAsync();
 
             return Ok(dto); 
         }
@@ -43,9 +43,9 @@ namespace WebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(int id, VillaUpdateDto dto)
         {
-            await _repository.UpdateAsync(id, dto);
+            await _Repository.UpdateAsync(id, dto);
 
-            await _repository.SaveChangesAsync();
+            await _Repository.SaveChangesAsync();
 
             return Ok(dto);
         }
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            await _repository.DeleteAsync(id);
+            await _Repository.DeleteAsync(id);
 
-            await _repository.SaveChangesAsync();
+            await _Repository.SaveChangesAsync();
 
             return NoContent();
         }

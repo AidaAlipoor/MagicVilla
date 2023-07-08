@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.ResolveDataAccessServices(builder.Configuration.GetConnectionString("DefaultSqlConnection")!);
-builder.Services.AddVillaRepositoryToContainer();
+builder.Services.AddRepositoriesToContainer();
 builder.Services.AddAutoMapperToContainer();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

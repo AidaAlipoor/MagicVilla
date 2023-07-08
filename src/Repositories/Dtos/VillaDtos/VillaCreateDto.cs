@@ -1,4 +1,4 @@
-﻿namespace Business.Dtos
+﻿namespace Business.Dtos.VillaDtos
 {
     public class VillaCreateDto
     {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Business.Dtos;
+using Business.Dtos.VillaDtos;
 using Business.Repositories.ParentRepository;
 using Business.ViewModels;
 using VillaEntity = DataAccess.Entities.Villa;
@@ -14,7 +14,7 @@ namespace Business.Repositories.VillaRepository
 
         public async Task<List<VillaViewModel>> GetAsync()
         {
-            var entities = await base.GetAllAsync();
+            var entities = await base.GetAllAsync(null , false);
 
             var records = _mapper.Map<List<VillaViewModel>>(entities);
 
@@ -45,7 +45,7 @@ namespace Business.Repositories.VillaRepository
 
         public async Task DeleteAsync(int? id)
         {
-            await DoesIdExist(id ?? default);
+            await CheckIdExist(id ?? default);
 
             var entity = await GetAsync(id ?? default);
 
@@ -63,7 +63,7 @@ namespace Business.Repositories.VillaRepository
 
         private async Task CheckIfVillaExist(int id , string name)
         {
-            await DoesIdExist(id);
+            await CheckIdExist(id);
 
             var entity = await GetAsync(id);
 
@@ -83,7 +83,7 @@ namespace Business.Repositories.VillaRepository
                 throw new Exception("Name or Detail is empty");
 
         }
-        private async Task DoesIdExist(int id)
+        private async Task CheckIdExist(int id)
         {
             var entity = await GetAsync(id);
 
