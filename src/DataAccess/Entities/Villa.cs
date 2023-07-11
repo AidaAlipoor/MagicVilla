@@ -11,5 +11,6 @@
         public string? Amenity { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
+        public virtual List<VillaNumber> VillaNumber { get; set; } 
     }
 }

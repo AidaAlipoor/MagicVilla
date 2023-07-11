@@ -9,6 +9,8 @@ namespace DataAccess.EntityConfiguration
         {
             var villaNumberEntity = modelBuilder.Entity<VillaNumber>();
             villaNumberEntity.HasKey(v => v.Id);
+            villaNumberEntity.HasOne(vn => vn.Villa)
+                .WithMany(v => v.VillaNumber);
         }
     }
 }

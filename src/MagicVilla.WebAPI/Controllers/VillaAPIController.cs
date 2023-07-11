@@ -1,4 +1,4 @@
-﻿using Business.Dtos;
+﻿using Business.Dtos.VillaDtos;
 using Business.Repositories.VillaRepository;
 using Microsoft.AspNetCore.Mvc;
 
