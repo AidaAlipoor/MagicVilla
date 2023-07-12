@@ -2,7 +2,7 @@
 using Business.Dtos.VillaNumberDtos;
 using Business.Repositories.ParentRepository;
 using Business.ViewModels;
-using DataAccess.Entities;
+using DataAccess;
 using VillaNumberEntity = DataAccess.Entities.VillaNumber;
 
 namespace Business.Repositories.VillaNumberRepository

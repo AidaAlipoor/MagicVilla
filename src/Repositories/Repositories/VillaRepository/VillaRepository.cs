@@ -2,6 +2,7 @@
 using Business.Dtos.VillaDtos;
 using Business.Repositories.ParentRepository;
 using Business.ViewModels;
+using DataAccess;
 using VillaEntity = DataAccess.Entities.Villa;
 
 namespace Business.Repositories.VillaRepository
