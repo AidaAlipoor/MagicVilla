@@ -17,8 +17,8 @@ namespace DataAccess
                 new Villa
                 {
                     Id= 1,
-                    Name ="Aida",
-                    Detail = "Ziba",
+                    Name ="Villa",
+                    Detail = "",
                     Rate = 0,
                     Occupancy = 10,
                     Amenity ="",
@@ -28,8 +28,8 @@ namespace DataAccess
                 new Villa 
                 { 
                     Id = 2,
-                    Name = "Behnam",
-                    Detail = "Yumurta",
+                    Name = "Villa2",
+                    Detail = "...",
                     Rate = 0,
                     Occupancy = 10,
                     Amenity = "",
