@@ -13,6 +13,7 @@ namespace DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.VillaConfig();
+            modelBuilder.VillaNumberConfig();
             modelBuilder.Entity<Villa>().HasData(
                 new Villa
                 {
