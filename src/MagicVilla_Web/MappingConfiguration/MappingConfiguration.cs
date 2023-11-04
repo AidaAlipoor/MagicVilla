@@ -9,7 +9,7 @@ namespace Business.MappingConfiguration
     {
         public MappingConfiguration()
         {
-            CreateMap<VillaDto , VillaUpdateDto>().ReverseMap();
+            CreateMap<VillaDto, VillaUpdateDto>().ReverseMap();
             CreateMap<VillaDto, VillaCreateDto>().ReverseMap();
             CreateMap<VillaDto, VillaViewModel>().ReverseMap();
 

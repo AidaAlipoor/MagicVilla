@@ -8,7 +8,8 @@ namespace DataAccess.EntityConfiguration
         {
                 var villaEntity = modelBuilder.Entity<Entities.Villa>();
                 villaEntity.HasKey(v => v.Id);
-                villaEntity.Property(v => v.Name).HasMaxLength(128).IsRequired();    
+                villaEntity.Property(v => v.Name).HasMaxLength(128).IsRequired();
+                villaEntity.Property(v => v.Price).IsRequired();
         }
     }
 }
