@@ -9,7 +9,7 @@ namespace MagicVilla_Web.Services.IService
     {
         public APIResponse ResponseModel { get; set; }
 
-        public IHttpClientFactory  HttpClient { get; set; }
+        public IHttpClientFactory HttpClient { get; set; }
 
         public BaseService(IHttpClientFactory httpClient)
         {
@@ -23,10 +23,10 @@ namespace MagicVilla_Web.Services.IService
             {
                 var client = HttpClient.CreateClient("MagicAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
-                message.Headers.Add("Accept","application/jason");
+                message.Headers.Add("Accept", "application/json");
                 message.RequestUri = new Uri(apiRequest.APIurl);
 
-                switch(apiRequest.APItype)
+                switch (apiRequest.APItype)
                 {
                     case APIType.Get:
                         message.Method = HttpMethod.Get;
@@ -36,8 +36,8 @@ namespace MagicVilla_Web.Services.IService
                         message.Method = HttpMethod.Post;
                         break;
 
-                    case APIType.Put: 
-                        message.Method = HttpMethod.Put;  
+                    case APIType.Put:
+                        message.Method = HttpMethod.Put;
                         break;
 
                     case APIType.Delete:
@@ -45,10 +45,12 @@ namespace MagicVilla_Web.Services.IService
                         break;
                 }
 
-                if(apiRequest.Data != null)
+                if (apiRequest.Data != null)
                 {
-                    message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data), 
-                        Encoding.UTF8, "application/jason");
+                    message.Content = new StringContent(
+                        JsonConvert.SerializeObject(apiRequest.Data),
+                        Encoding.UTF8,
+                        "application/json");
                 }
 
                 HttpResponseMessage apiResponse = null;
@@ -64,14 +66,14 @@ namespace MagicVilla_Web.Services.IService
 
             catch (Exception ex)
             {
-                var dto = new APIResponse() 
+                var dto = new APIResponse()
                 {
-                    ErrorMessage = new List<string> {Convert.ToString(ex.Message)},
+                    ErrorMessage = new List<string> { Convert.ToString(ex.Message) },
                     IsSuccess = true,
                 };
 
-                var rs = JsonConvert.SerializeObject(dto);
-                var apiResponseJson = JsonConvert.DeserializeObject<T>(rs);
+                var response = JsonConvert.SerializeObject(dto);
+                var apiResponseJson = JsonConvert.DeserializeObject<T>(response);
                 return apiResponseJson;
             }
         }

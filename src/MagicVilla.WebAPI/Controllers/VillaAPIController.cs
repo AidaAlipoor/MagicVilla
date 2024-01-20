@@ -1,6 +1,7 @@
 ﻿using Business.Dtos.VillaDtos;
 using Business.Repositories.VillaRepository;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace WebAPI.Controllers
 {
@@ -19,7 +20,7 @@ namespace WebAPI.Controllers
         {
             var entities = await _Repository.GetAsync();
 
-            return Ok(entities);
+            return Ok(new APIResponse { Result = entities });
         }
 
         [HttpGet("{id:int}")]
@@ -37,7 +38,7 @@ namespace WebAPI.Controllers
 
             await _Repository.SaveChangesAsync();
 
-            return Ok(dto); 
+            return Ok(dto);
         }
 
         [HttpPut]
@@ -60,5 +61,14 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
+
+
+        public class APIResponse
+        {
+            public HttpStatusCode StatusCode { get; set; }
+            public bool IsSuccess { get; set; } = true;
+            public List<string> ErrorMessage { get; set; }
+            public object Result { get; set; }
+        }
     }
 }

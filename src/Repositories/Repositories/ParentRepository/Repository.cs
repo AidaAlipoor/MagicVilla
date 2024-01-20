@@ -35,7 +35,7 @@ namespace Business.Repositories.ParentRepository
 
                 entities = _dbSet.Where(filter);
             }
-            return await entities.FirstOrDefaultAsync();
+            return await entities.FirstOrDefaultAsync(); //TODO: Something wrong with this output and the method name :|
         }
 
         public virtual async Task<TEntity> GetAsync(int id) => await _dbSet.FindAsync(id);

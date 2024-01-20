@@ -1,6 +1,7 @@
 using Business.RepositoryConfiguration;
 using Business.MappingConfiguration;
 using DataAccess.ContainerConfiguration;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

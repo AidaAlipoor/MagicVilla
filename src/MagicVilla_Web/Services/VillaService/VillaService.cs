@@ -36,9 +36,9 @@ namespace MagicVilla_Web.Services.VillaService
             });
         }
 
-        public Task<T> GetAllAsync<T>()
+        public async Task<T> GetAllAsync<T>()
         {
-            return SendAsync<T>(new APIRequest()
+            return await SendAsync<T>(new APIRequest()
             {
                 APItype = APIType.Get,
                 APIurl = _villaUrl + "/api/villaAPI" 

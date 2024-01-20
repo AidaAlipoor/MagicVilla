@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicVilla_Web", "MagicVill
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicVilla_Utility", "MagicVilla_Utility\MagicVilla_Utility.csproj", "{D6221EE7-0832-491C-A102-93F5B4A133AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neisan.UnitTest", "Neisan.UnitTest\Neisan.UnitTest.csproj", "{27C06A46-D377-4D76-BC5A-4F9D407AE65D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{D6221EE7-0832-491C-A102-93F5B4A133AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6221EE7-0832-491C-A102-93F5B4A133AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6221EE7-0832-491C-A102-93F5B4A133AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27C06A46-D377-4D76-BC5A-4F9D407AE65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27C06A46-D377-4D76-BC5A-4F9D407AE65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27C06A46-D377-4D76-BC5A-4F9D407AE65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27C06A46-D377-4D76-BC5A-4F9D407AE65D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
