@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MagicVilla_Web.Models;
+using MagicVilla_Web.Models.Dtos.VillaDtos;
 using MagicVilla_Web.Models.ViewModels;
 using MagicVilla_Web.Services.VillaService;
 using Microsoft.AspNetCore.Mvc;
@@ -21,16 +22,35 @@ namespace MagicVilla_Web.Controllers
 
         public async Task<IActionResult> IndexVilla()
         {
-            var villaDtoList = new List<VillaViewModel>();
+            var villaViewModelList = new List<VillaViewModel>();
 
             var response = await _villaService.GetAllAsync<APIResponse>();
 
             if (response != null && response.IsSuccess)
             {
-                villaDtoList = JsonConvert.DeserializeObject<List<VillaViewModel>>(Convert.ToString(response.Result));
+                villaViewModelList = JsonConvert.DeserializeObject<List<VillaViewModel>>(Convert.ToString(response.Result));
             }
 
-            return View(villaDtoList);
+            return View(villaViewModelList);
+        }
+
+        public async Task<IActionResult> CreateVilla()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateVilla(VillaCreateDto dto)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _villaService.CreateAsync<APIResponse>(dto);
+
+                if (response != null && response.IsSuccess)
+                    return RedirectToAction(nameof(IndexVilla));
+            }
+            return View(dto);
         }
     }
 }

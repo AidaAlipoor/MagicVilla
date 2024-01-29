@@ -18,9 +18,9 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var entities = await _Repository.GetAsync();
+            var viewModels = await _Repository.GetAsync();
 
-            return Ok(new APIResponse { Result = entities });
+            return Ok(new APIResponse { Result = viewModels });
         }
 
         [HttpGet("{id:int}")]
