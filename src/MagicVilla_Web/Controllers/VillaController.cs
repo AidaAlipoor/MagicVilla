@@ -20,6 +20,7 @@ namespace MagicVilla_Web.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IActionResult> IndexVilla()
         {
             var villaViewModelList = new List<VillaViewModel>();
@@ -34,6 +35,7 @@ namespace MagicVilla_Web.Controllers
             return View(villaViewModelList);
         }
 
+        [HttpGet]
         public async Task<IActionResult> CreateVilla()
         {
             return View();
@@ -46,6 +48,31 @@ namespace MagicVilla_Web.Controllers
             if (ModelState.IsValid)
             {
                 var response = await _villaService.CreateAsync<APIResponse>(dto);
+
+                if (response != null && response.IsSuccess)
+                    return RedirectToAction(nameof(IndexVilla));
+            }
+            return View(dto);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateVilla(int villaId)
+        {
+            var response = await _villaService.GetAsync<APIResponse>(villaId);
+
+            var model = JsonConvert.DeserializeObject<VillaViewModel>(response.Result.ToString());
+
+            return View(_mapper.Map<VillaUpdateDto>(model));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateVilla(VillaUpdateDto dto)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _villaService.UpdateAsync<APIResponse>(dto);
 
                 if (response != null && response.IsSuccess)
                     return RedirectToAction(nameof(IndexVilla));

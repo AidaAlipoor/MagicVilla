@@ -12,6 +12,7 @@ namespace Business.MappingConfiguration
             CreateMap<VillaDto, VillaUpdateDto>().ReverseMap();
             CreateMap<VillaDto, VillaCreateDto>().ReverseMap();
             CreateMap<VillaDto, VillaViewModel>().ReverseMap();
+            CreateMap<VillaViewModel, VillaUpdateDto>().ReverseMap();
 
             CreateMap<VillaNumDto , VillaNumberViewModel>().ReverseMap();
             CreateMap<VillaNumDto, VillaNumberDto>().ReverseMap();   

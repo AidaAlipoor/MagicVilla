@@ -8,8 +8,9 @@ namespace Business.Repositories.VillaRepository
     public interface IVillaRepository : IRepository<Villa>
     {
         Task<List<VillaViewModel>> GetAsync();
+        new Task<VillaViewModel> GetAsync(int id);
         void Insert(VillaCreateDto dto);
-        Task UpdateAsync(int id , VillaUpdateDto dto); 
+        Task UpdateAsync( VillaUpdateDto dto);
         Task DeleteAsync(int? id);
     }
 }
