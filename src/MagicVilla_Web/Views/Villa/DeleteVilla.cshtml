@@ -1,10 +1,10 @@
-﻿@model MagicVilla_Web.Models.Dtos.VillaDtos.VillaUpdateDto
+﻿@model MagicVilla_Web.Models.ViewModels.VillaViewModel
 
-<form asp-action="UpdateVilla">
+<form asp-action="DeleteVilla">
 
     <br />
     <div class="container border p-3">
-        <h1 class=" text-primary"> Update </h1>
+        <h1 class=" text-primary"> Delete </h1>
 
         <hr />
         <input hidden asp-for="Id" />
@@ -15,39 +15,35 @@
                 <label asp-for="Name" class=" control-Label pt-2" style="font-size : 20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="Name" class="form-control" value="@Model.Name" />
-                <span asp-validation-for="Name" class=" text-danger"></span>
+                <input asp-for="Name" disabled class="form-control" value="@Model.Name" />
             </div>
 
             <div class="col-2">
                 <label asp-for="Detail" class=" control-Label pt-2" style="font-size : 20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <textarea asp-for="Detail" class="form-control" value="@Model.Detail" rows="5"></textarea>
+                <textarea asp-for="Detail" disabled class="form-control" value="@Model.Detail" rows="5"></textarea>
             </div>
 
             <div class="col-2">
                 <label asp-for="Rate" class=" control-Label pt-2" style="font-size : 20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="Rate" class="form-control" value="@Model.Rate" />
-                <span asp-validation-for="Rate" class=" text-danger"></span>
+                <input asp-for="Rate" disabled class="form-control" value="@Model.Rate" />
             </div>
 
             <div class="col-2">
                 <label asp-for="Price" class=" control-Label pt-2" style="font-size : 20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="Price" class="form-control" value="@Model.Price"/>
-                <span asp-validation-for="Price" class=" text-danger"></span>
+                <input asp-for="Price" disabled class="form-control" value="@Model.Price" />
             </div>
 
             <div class="col-2">
                 <label asp-for="Occupancy" class=" control-Label pt-2" style="font-size : 20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="Occupancy" class="form-control" value="@Model.Occupancy" />
-                <span asp-validation-for="Occupancy" class=" text-danger"></span>
+                <input asp-for="Occupancy" disabled class="form-control" value="@Model.Occupancy" />
             </div>
 
             <div class="col-2">
@@ -55,24 +51,22 @@
 
             </div>
             <div class="col-10 pb-3">
-                <input asp-for="ImageUrl" class="form-control" value="@Model.ImageUrl" />
-                <span asp-validation-for="ImageUrl" class=" text-danger"></span>
+                <input asp-for="ImageUrl" disabled class="form-control" value="@Model.ImageUrl" />
             </div>
 
             <div class="col-2">
                 <label asp-for="Amenity" class=" control-Label pt-2" style="font-size : 20px;"></label>
             </div>
             <div class="col-10 pb-3">
-                <textarea asp-for="Amenity" class="form-control" value="@Model.Amenity" rows="5"></textarea>
-                <span asp-validation-for="Amenity" class=" text-danger"></span>
+                <textarea asp-for="Amenity" disabled class="form-control" value="@Model.Amenity" rows="5"></textarea>
             </div>
 
             <div style="display:flex;flex-direction:row-reverse;gap:1rem">
                 <div>
-                    <input type="submit" value="Update" class="btn btn-success form-control" />
+                    <input type="submit" value="Delete" class="btn btn-danger form-control" />
                 </div>
                 <div>
-                    <a asp-action="IndexVilla" asp-controller=" Villa" class="btn-primary btn form-control"> Back to List</a>
+                    <a asp-action="IndexVilla" asp-controller="Villa" class="btn-primary btn form-control"> Back to List</a>
                 </div>
             </div>
 
@@ -84,3 +78,4 @@
 @section scripts{
     <partial name="_ValidationScriptsPartial" />
 }
+

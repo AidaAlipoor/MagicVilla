@@ -1,5 +1,6 @@
 ﻿using Business.Dtos.VillaDtos;
 using Business.Repositories.VillaRepository;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -51,14 +52,14 @@ namespace WebAPI.Controllers
             return Ok(new APIResponse { Result = dto });
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _repository.DeleteAsync(id);
 
             await _repository.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new APIResponse { IsSuccess = true});
         }
 
 
