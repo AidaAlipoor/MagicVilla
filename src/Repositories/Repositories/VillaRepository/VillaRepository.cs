@@ -15,7 +15,7 @@ namespace Business.Repositories.VillaRepository
 
         public async Task<List<VillaViewModel>> GetAsync()
         {
-            var entities = await base.GetAllAsync();
+            var entities = await base.GetAllAsync(null);
 
             return _mapper.Map<List<VillaViewModel>>(entities);
         }

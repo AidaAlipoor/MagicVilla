@@ -12,6 +12,9 @@ namespace Business.Repositories.ParentRepository
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
+            _dbContext.VillaNumbers
+                .Include(v => v.Villa)
+                .ToList();
         }
 
         public virtual void Insert(TEntity entity) => _dbSet.Add(entity);
@@ -20,12 +23,43 @@ namespace Business.Repositories.ParentRepository
 
         public virtual void Delete(TEntity entity) => _dbSet.Remove(entity);
 
-        public async Task<List<TEntity>> GetAllAsync() => await _dbSet.ToListAsync();
+        public async Task<List<TEntity>> GetAllAsync(string? includeNavigationProperty = null)
+        {
+            IQueryable<TEntity> entities = _dbSet;
 
-        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter)
-            => await _dbSet.Where(filter).ToListAsync();
+            if (includeNavigationProperty is not null)
+            {
+                var properties = includeNavigationProperty
+                    .Split(new char[] { ',' },
+                    StringSplitOptions.RemoveEmptyEntries);
 
-        public async Task<TEntity> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true)
+                foreach (var property in properties)
+                    entities = entities.Include(property);
+            }
+
+            return await entities.ToListAsync();
+        }
+
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter,
+            string? includeNavigationProperty)
+        {
+            IQueryable<TEntity> entities = _dbSet;
+
+            if (includeNavigationProperty is not null)
+            {
+                var properties = includeNavigationProperty
+                    .Split(new char[] { ',' }, 
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var property in properties)
+                    entities = entities.Include(property);
+            }
+
+            return await entities.Where(filter).ToListAsync();
+        }
+
+        public async Task<TEntity> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null,
+            bool tracked = true, string? includeNavigationProperty = null)
         {
             IQueryable<TEntity> entities = _dbSet;
 
@@ -34,6 +68,16 @@ namespace Business.Repositories.ParentRepository
                 entities.AsNoTracking();
 
                 entities = _dbSet.Where(filter);
+
+                if(includeNavigationProperty is not null)
+                {
+                    var properties = includeNavigationProperty
+                        .Split(new char[] { ',' },
+                        StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (var property in properties)
+                        entities = entities.Include(property);
+                }
             }
             return await entities.FirstOrDefaultAsync(); //TODO: Something wrong with this output and the method name :|
         }

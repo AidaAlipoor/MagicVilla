@@ -16,7 +16,7 @@ namespace Business.Repositories.VillaNumberRepository
 
         public async Task<List<VillaNumberViewModel>> GetAsync()
         {
-            var entities = await GetAllAsync(null , false);
+            var entities = await GetAllAsync(null , false, includeNavigationProperty : "Villa");
 
             return _mapper.Map<List<VillaNumberViewModel>>(entities);
         }
