@@ -1,4 +1,6 @@
-﻿namespace MagicVilla_Web.Models.Dtos.VillaNumberDtos
+﻿using MagicVilla_Web.Models.Dtos.VillaDtos;
+
+namespace MagicVilla_Web.Models.Dtos.VillaNumberDtos
 {
     public class VillaNumDto
     {

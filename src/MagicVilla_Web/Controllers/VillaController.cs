@@ -2,7 +2,7 @@
 using MagicVilla_Web.Models;
 using MagicVilla_Web.Models.Dtos.VillaDtos;
 using MagicVilla_Web.Models.ViewModels;
-using MagicVilla_Web.Services.VillaService;
+using MagicVilla_Web.Services.VillaNumberService;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

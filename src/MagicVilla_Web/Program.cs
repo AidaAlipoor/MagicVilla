@@ -1,5 +1,5 @@
 using Business.MappingConfiguration;
-using MagicVilla_Web.Services.VillaService;
+using MagicVilla_Web.Services.VillaNumberService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +8,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapperToContainer();
 
 builder.Services.AddHttpClient<IVillaService , VillaService>();
-builder.Services.AddScoped<IVillaService, VillaService>();  
+builder.Services.AddScoped<IVillaService, VillaService>();
+
+builder.Services.AddHttpClient<IVillaNumberService, VillaNumberService>();
+builder.Services.AddScoped<IVillaNumberService, VillaNumberService>();
 
 var app = builder.Build();        
 
