@@ -58,7 +58,7 @@ namespace Business.Repositories.ParentRepository
             return await entities.Where(filter).ToListAsync();
         }
 
-        public async Task<TEntity> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null,
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null,
             bool tracked = true, string? includeNavigationProperty = null)
         {
             IQueryable<TEntity> entities = _dbSet;
@@ -79,7 +79,7 @@ namespace Business.Repositories.ParentRepository
                         entities = entities.Include(property);
                 }
             }
-            return await entities.FirstOrDefaultAsync(); //TODO: Something wrong with this output and the method name :|
+            return await entities.ToListAsync(); //TODO: Something wrong with this output and the method name :|
         }
 
         public virtual async Task<TEntity> GetAsync(int id) => await _dbSet.FindAsync(id);

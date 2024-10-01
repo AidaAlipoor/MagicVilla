@@ -10,6 +10,6 @@ namespace MagicVilla_Web.Models.ViewModels
         public string SpecialDetails { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public VillaDto VillaDto { get; set; }
+        public VillaViewModel Villa { get; set; }
     }
 }

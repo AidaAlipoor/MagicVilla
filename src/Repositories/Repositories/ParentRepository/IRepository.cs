@@ -6,7 +6,7 @@ namespace Business.Repositories.ParentRepository
     {
         Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter, string? includeNavigationProperty = null);
         Task<List<TEntity>> GetAllAsync(string? includeNavigationProperty = null);
-        Task<TEntity> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null,
+        Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? filter = null,
             bool tracked = true, string? includeNavigationProperty = null);
         Task<TEntity> GetAsync(int id);
         void Insert(TEntity entity);

@@ -1,6 +1,7 @@
 ﻿using Business.Dtos.VillaNumberDtos;
 using Business.Repositories.VillaNumberRepository;
 using Microsoft.AspNetCore.Mvc;
+using static WebAPI.Controllers.VillaAPIController;
 
 namespace WebAPI.Controllers
 {
@@ -17,17 +18,17 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var entities = await _repository.GetAsync();
+            var viewModels = await _repository.GetAsync();
 
-            return Ok(entities);
+            return Ok(new APIResponse { Result = viewModels });
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
-            var entity = await _repository.GetAsync(id);
+            var viewModel = await _repository.GetAsync(id);
 
-            return Ok(entity);
+            return Ok(new APIResponse { Result = viewModel });
         }
 
         [HttpPost]
