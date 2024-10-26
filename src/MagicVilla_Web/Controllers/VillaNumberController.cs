@@ -45,18 +45,18 @@ namespace MagicVilla_Web.Controllers
         {
             var villaNumberCreateViewModel = new VillaNumberCreateViewModel();
 
-            var villas = await _villaNumberService
+            var villas = await _villaService
                 .GetAllAsync<APIResponse>();
 
             if (villas != null && villas.IsSuccess)
             {
                 villaNumberCreateViewModel.VillaList = JsonConvert
-                    .DeserializeObject<List<VillaNumberViewModel>>
+                    .DeserializeObject<List<VillaViewModel>>
                     (Convert.ToString(villas.Result))
                     .Select(v => new SelectListItem
                     {
-                         Text = v.Villa.Name,
-                         Value = v.VillaId.ToString()
+                         Text = v.Name,
+                         Value = v.ToString()
                     });
             }
 
