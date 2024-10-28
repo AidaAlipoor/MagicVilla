@@ -56,7 +56,7 @@ namespace MagicVilla_Web.Controllers
                     .Select(v => new SelectListItem
                     {
                          Text = v.Name,
-                         Value = v.ToString()
+                         Value = v.Id.ToString()
                     });
             }
 
