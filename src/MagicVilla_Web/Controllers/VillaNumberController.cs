@@ -39,7 +39,6 @@ namespace MagicVilla_Web.Controllers
             return View(villaNumberViewModel);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> CreateVillaNumber()
         {
@@ -66,15 +65,15 @@ namespace MagicVilla_Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateVilla(VillaNumberCreateViewModel dto)
+        public async Task<IActionResult> CreateVillaNumber(VillaNumberCreateViewModel dto)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 var response = await _villaNumberService.CreateAsync<APIResponse>(dto.VillaNumber);
 
                 if (response != null && response.IsSuccess)
                     return RedirectToAction(nameof(IndexVillaNumber));
-            }
+            //}
             return View(dto);
         }
 
