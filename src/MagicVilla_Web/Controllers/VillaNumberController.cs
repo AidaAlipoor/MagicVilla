@@ -54,8 +54,8 @@ namespace MagicVilla_Web.Controllers
                     (Convert.ToString(villas.Result))
                     .Select(v => new SelectListItem
                     {
-                         Text = v.Name,
-                         Value = v.Id.ToString()
+                        Text = v.Name,
+                        Value = v.Id.ToString()
                     });
             }
 
@@ -67,13 +67,29 @@ namespace MagicVilla_Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateVillaNumber(VillaNumberCreateViewModel dto)
         {
-            //if (ModelState.IsValid)
-            //{
-                var response = await _villaNumberService.CreateAsync<APIResponse>(dto.VillaNumber);
+            var response = await _villaNumberService.CreateAsync<APIResponse>(dto.VillaNumber);
 
-                if (response != null && response.IsSuccess)
-                    return RedirectToAction(nameof(IndexVillaNumber));
-            //}
+            if (response != null && response.IsSuccess)
+                return RedirectToAction(nameof(IndexVillaNumber));
+
+            else if(response.ErrorMessage.Any())
+                ModelState.AddModelError("Error message", response.ErrorMessage.FirstOrDefault());
+
+            var villas = await _villaService
+                    .GetAllAsync<APIResponse>();
+
+            if (villas != null && villas.IsSuccess)
+            {
+                dto.VillaList = JsonConvert
+                    .DeserializeObject<List<VillaViewModel>>
+                    (Convert.ToString(villas.Result))
+                    .Select(v => new SelectListItem
+                    {
+                        Text = v.Name,
+                        Value = v.Id.ToString()
+                    });
+            }
+
             return View(dto);
         }
 

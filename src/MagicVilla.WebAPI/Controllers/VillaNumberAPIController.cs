@@ -20,6 +20,12 @@ namespace WebAPI.Controllers
         {
             var viewModels = await _repository.GetAsync();
 
+            if (viewModels.Any() is false)
+            { 
+                ModelState.AddModelError("Error Message", "There is no villaNumber yet!");
+                return BadRequest(ModelState);
+            }
+
             return Ok(new APIResponse { Result = viewModels });
         }
 
@@ -35,6 +41,9 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Post([FromBody] VillaNumberDto dto)
         {
             _repository.Insert(dto);
+
+            if (dto is null)
+                return BadRequest(dto);
 
             await _repository.SaveChangesAsync();
 

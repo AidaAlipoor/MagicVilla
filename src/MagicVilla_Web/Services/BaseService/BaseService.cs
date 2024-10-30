@@ -59,9 +59,29 @@ namespace MagicVilla_Web.Services.IService
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
 
-                var apiResponseJson = JsonConvert.DeserializeObject<T>(apiContent);
+                try
+                {
+                    APIResponse apiResponseJason = JsonConvert
+                        .DeserializeObject<APIResponse>(apiContent);
 
-                return apiResponseJson;
+                    if(apiResponseJason.StatusCode == System.Net.HttpStatusCode.BadGateway 
+                        || apiResponseJason.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        apiResponseJason.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                        apiResponseJason.IsSuccess = false;
+
+                        var serializesResponse = JsonConvert.SerializeObject(apiResponseJason);
+                        var deserializedsResponse = JsonConvert.DeserializeObject<T>(serializesResponse);
+                        return deserializedsResponse;
+                    }
+                }
+                catch (Exception)
+                {
+                    var apiResponseJson = JsonConvert.DeserializeObject<T>(apiContent);
+                    return apiResponseJson;
+                }
+                var response = JsonConvert.DeserializeObject<T>(apiContent);
+                return response;
             }
 
             catch (Exception ex)
