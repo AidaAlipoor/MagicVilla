@@ -1,11 +1,11 @@
 ﻿using MagicVilla_Web.Models.Dtos.VillaNumberDtos;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace MagicVilla_Web.Models.ViewModels
+namespace MagicVilla_Web.Models.ViewModels.villaNumberViewModels
 {
-    public class VillaNumberCreateViewModel
+    public class VillaNumberUpdateViewModel
     {
-        public VillaNumberCreateViewModel()
+        public VillaNumberUpdateViewModel()
         {
             VillaNumber = new VillaNumDto();
         }

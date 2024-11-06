@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using MagicVilla_Web.Models.Dtos.VillaDtos;
 using MagicVilla_Web.Models.Dtos.VillaNumberDtos;
-using MagicVilla_Web.Models.ViewModels;
+using MagicVilla_Web.Models.ViewModels.villaNumberViewModels;
+using MagicVilla_Web.Models.ViewModels.VillaViewModels;
 
 namespace Business.MappingConfiguration
 {
@@ -15,7 +16,7 @@ namespace Business.MappingConfiguration
             CreateMap<VillaViewModel, VillaUpdateDto>().ReverseMap();
 
             CreateMap<VillaNumDto , VillaNumberViewModel>().ReverseMap();
-            CreateMap<VillaNumDto, VillaNumberDto>().ReverseMap();   
+            CreateMap<VillaNumDto, VillaNumberDto>().ReverseMap();
         }
     }
 }

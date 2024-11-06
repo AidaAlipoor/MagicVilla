@@ -1,6 +1,7 @@
 ﻿using MagicVilla_Web.Models.Dtos.VillaDtos;
+using MagicVilla_Web.Models.ViewModels.VillaViewModels;
 
-namespace MagicVilla_Web.Models.ViewModels
+namespace MagicVilla_Web.Models.ViewModels.villaNumberViewModels
 {
     public sealed class VillaNumberViewModel
     {

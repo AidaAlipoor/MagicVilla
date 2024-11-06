@@ -1,12 +1,13 @@
-﻿@model MagicVilla_Web.Models.ViewModels.villaNumberViewModels.VillaNumberCreateViewModel
+﻿@model MagicVilla_Web.Models.ViewModels.villaNumberViewModels.VillaNumberUpdateViewModel
 
-<form asp-action="CreateVillaNumber">
+<form asp-action="UpdateVillaNumber">
 
     <br />
     <div class="container border p-3">
-        <h1 class=" text-primary"> CraeteVillaNumber </h1>
+        <h1 class=" text-primary"> Update VillaNumber </h1>
 
         <hr />
+        <input hidden asp-for="VillaNumber.Id" />
         <div class="row">
 
             <div asp-validation-summary="All" class=" text-danger"></div>
@@ -29,7 +30,7 @@
             </div>
             <div style="display:flex;flex-direction:row-reverse;gap:1rem">
                 <div>
-                    <input type="submit" value="create" class="btn btn-success form-control" />
+                    <input type="submit" value="Update" class="btn btn-success form-control" />
                 </div>
                 <div>
                     <a asp-action="IndexVillaNumber" asp-controller="VillaNumber" class="btn-primary btn form-control"> Back to List</a>
@@ -44,3 +45,5 @@
 @section scripts{
     <partial name="_ValidationScriptsPartial" />
 }
+
+

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MagicVilla_Web.Models.ViewModels.VillaNumberViewModel>
+﻿@model IEnumerable<MagicVilla_Web.Models.ViewModels.villaNumberViewModels.VillaNumberViewModel>
 <br />
 <div class="container p-4 border">
     <div class=" row p-2">
@@ -30,11 +30,11 @@
                     <td>@villa.Villa.Name</td>
                     <td>@villa.VillaNumber</td>
                     <td>
-                        <a asp-Controller="Villa" asp-action="UpdateVilla" asp-route-villaNumber="@villa.VillaNumber" class="btn btn-success">
+                        <a asp-Controller="VillaNumber" asp-action="UpdateVillaNumber" asp-route-villaNumber="@villa.VillaNumber" class="btn btn-success">
                             <i class="bi bi-pencil-square"></i>
                         </a>
 
-                        <a asp-Controller="Villa" asp-action="DeleteVilla" asp-route-villaNumber="@villa.VillaNumber" class="btn btn-danger">
+                        <a asp-Controller="VillaNumber" asp-action="DeleteVillaNumber" asp-route-villaNumber="@villa.VillaNumber" class="btn btn-danger">
                             <i class="bi bi-trash-fill"></i>
                         </a>
                     </td>

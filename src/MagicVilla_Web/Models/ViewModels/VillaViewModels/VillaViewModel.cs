@@ -1,8 +1,8 @@
-﻿namespace MagicVilla_Web.Models.ViewModels
+﻿namespace MagicVilla_Web.Models.ViewModels.VillaViewModels
 {
     public sealed class VillaViewModel
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Detail { get; set; }
         public double Rate { get; set; }

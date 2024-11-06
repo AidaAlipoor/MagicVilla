@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MagicVilla_Web.Models;
 using MagicVilla_Web.Models.Dtos.VillaDtos;
-using MagicVilla_Web.Models.ViewModels;
+using MagicVilla_Web.Models.ViewModels.VillaViewModels;
 using MagicVilla_Web.Services.VillaNumberService;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

@@ -21,6 +21,12 @@ namespace Business.Repositories.VillaNumberRepository
             return _mapper.Map<List<VillaNumberViewModel>>(entities);
         }
 
+        public new async Task<VillaNumberViewModel> GetAsync(int id)
+        {
+            var entity = await base.GetAsync(id);
+            return _mapper.Map<VillaNumberViewModel>(entity);
+        }
+
         public void Insert(VillaNumberDto dto)
         {
             var entity = _mapper.Map<VillaNumberEntity>(dto);
@@ -47,7 +53,7 @@ namespace Business.Repositories.VillaNumberRepository
         {
             await CheckIdExist(id);
 
-            var entity = await GetAsync(id);
+            var entity = await base.GetAsync(id);
 
             Delete(entity);
         }
@@ -61,11 +67,10 @@ namespace Business.Repositories.VillaNumberRepository
         }
         private async Task CheckIdExist(int id)
         {
-            var entity = await GetAsync(id);
+            var entity = await base.GetAsync(id);
 
             if (entity is null)
                 throw new Exception("id does not exist");
         }
-
     }
 }

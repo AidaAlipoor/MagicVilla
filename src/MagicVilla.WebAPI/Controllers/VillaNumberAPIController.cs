@@ -1,5 +1,6 @@
 ﻿using Business.Dtos.VillaNumberDtos;
 using Business.Repositories.VillaNumberRepository;
+using Business.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using static WebAPI.Controllers.VillaAPIController;
 
@@ -51,9 +52,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int id, VillaNumberDto dto)
+        public async Task<IActionResult> Put(VillaNumberDto dto)
         {
-            await _repository.UpdateAsync(id, dto);
+            await _repository.UpdateAsync(dto.Id, dto);
 
             await _repository.SaveChangesAsync();
 
