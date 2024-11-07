@@ -5,7 +5,7 @@
         <div class=" col">
             <h1 class="text-primary"> Villa Number List</h1>
         </div>
-        <div class="col text-end pt-1">
+        <div class="col text-end pt-1">s
             <a asp-Controller="VillaNumber" asp-action="CreateVillaNumber" class="btn btn-outline-primary"><i class="bi bi-file-plus-fill"></i> Create New Villa Number </a>
         </div>
     </div>
@@ -30,7 +30,7 @@
                     <td>@villa.Villa.Name</td>
                     <td>@villa.VillaNumber</td>
                     <td>
-                        <a asp-Controller="VillaNumber" asp-action="UpdateVillaNumber" asp-route-villaNumber="@villa.VillaNumber" class="btn btn-success">
+                        <a asp-Controller="VillaNumber" asp-action="UpdateVillaNumber" asp-route-Id="@villa.Id" class="btn btn-success">
                             <i class="bi bi-pencil-square"></i>
                         </a>
 
