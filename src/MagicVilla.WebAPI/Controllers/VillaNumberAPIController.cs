@@ -61,14 +61,14 @@ namespace WebAPI.Controllers
             return Ok(dto);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _repository.DeleteAsync(id);
 
             await _repository.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new APIResponse { IsSuccess = true });
         }
     }
 }

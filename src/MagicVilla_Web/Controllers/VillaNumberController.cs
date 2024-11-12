@@ -202,6 +202,9 @@ namespace MagicVilla_Web.Controllers
             if (response != null && response.IsSuccess)
                 return RedirectToAction(nameof(IndexVillaNumber));
 
+            else if (response.ErrorMessage.Any())
+                ModelState.AddModelError("Error message", response.ErrorMessage.FirstOrDefault());
+
             return View();
         }
     }
