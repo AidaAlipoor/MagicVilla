@@ -14,6 +14,7 @@ namespace DataAccess
         {
             modelBuilder.VillaConfig();
             modelBuilder.VillaNumberConfig();
+            modelBuilder.LocalUserConfig();
             modelBuilder.Entity<Villa>().HasData(
                 new Villa
                 {
@@ -44,5 +45,6 @@ namespace DataAccess
 
         public DbSet<Villa> Villas { get; set; }
         public DbSet<VillaNumber> VillaNumbers { get; set; }
+        public DbSet<LocalUser> LocalUsers { get; set; }
     }
 }
