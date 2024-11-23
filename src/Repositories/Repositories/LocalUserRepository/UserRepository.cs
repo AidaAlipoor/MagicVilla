@@ -14,9 +14,14 @@ namespace Business.Repositories.LocalUserRepository
         public UserRepository(ApplicationDbContext dbContext, IMapper mapper)
             : base(dbContext) => _mapper = mapper;
 
+
         public bool IsUniqueUser(string username)
         {
-            throw new NotImplementedException();
+            var user = GetAllAsync(u => u.UserName == username);
+
+            if(user is not null)
+                return true;
+            return false;
         }
 
         public Task<LoginResponseViewModel> Login(LoginRequestDto loginRequestDto)
@@ -24,9 +29,39 @@ namespace Business.Repositories.LocalUserRepository
             throw new NotImplementedException();
         }
 
-        public Task<LocalUser> Register(RegistrationRequestDto registrationRequestDto)
+        public async Task<LocalUser> Register(RegistrationRequestDto registrationRequestDto)
         {
-            throw new NotImplementedException();
+            var newUser = new LocalUser()
+            {
+                Name = registrationRequestDto.Name,
+                password = registrationRequestDto.Password,
+                UserName = registrationRequestDto.Password,
+                Role = registrationRequestDto.Role,
+            };
+
+            Insert(newUser);
+
+            await SaveChangesAsync();
+
+            newUser.password = "";
+
+            return newUser; 
+        }
+        public async Task DeleteAsync(int id)
+        {
+            await CheckIdExist(id);
+
+            var user = await GetAsync(id);
+
+            Delete(user);
+        }
+
+        private async Task CheckIdExist(int id)
+        {
+            var user = await GetAsync(id);
+
+            if(user is null)
+                throw new Exception("id does not exist");
         }
     }
 }

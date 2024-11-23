@@ -9,5 +9,6 @@ namespace Business.Repositories.LocalUserRepository
         bool IsUniqueUser(string username);
         Task<LoginResponseViewModel> Login(LoginRequestDto loginRequestDto);
         Task<LocalUser> Register(RegistrationRequestDto registrationRequestDto);
+        Task DeleteAsync(int id);   
     }
 }
